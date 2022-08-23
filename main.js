@@ -181,3 +181,155 @@ const num2 = 200;
 
 const whoIsBig =
   num1 > num2 ? console.log("num1 is big") : console.log("num2 is big");
+
+//function declarations
+// function ageCalculator(birthYear) {
+//   const age = 2022 - birthYear;
+//   return age;
+// }
+
+// console.log(ageCalculator(1995));
+
+// function expressions
+// const ageCalculator = function (birthYear) {
+//   const age = 2022 - birthYear;
+//   return age;
+// };
+
+// console.log(ageCalculator(1995));
+
+// arrow functions
+// const ageCalculator = (birthYear) => {
+//   const age = 2022 - birthYear;
+//   return age;
+// };
+
+const ageCalculator = (birthYear) => 2022 - birthYear;
+console.log(ageCalculator(1995));
+
+// callback
+function breadCutter(breads) {
+  return breads * 2;
+}
+
+function burgerMaker(breads, chickens, vegetables) {
+  const breadPieces = breadCutter(breads);
+  return `Burger is ready using ${breadPieces} bread pieces, ${chickens} chickens and ${vegetables} gram vegetables. 🍔`;
+}
+
+console.log(burgerMaker(10, 2, 0.35));
+
+// curry function
+function multiplication(a) {
+  return function (b) {
+    return function (c, x, y) {
+      return function (d) {
+        return a * b * c * d * x * y;
+      };
+    };
+  };
+}
+
+console.log(multiplication(1)(2)(3, 10, 20)(4));
+
+const multiplicationPro = (a) => (b) => (c, x, y) => (d) =>
+  a * b * c * d * x * y;
+
+console.log(multiplicationPro(1)(2)(3, 10, 20)(4));
+
+// arrays
+const numbers = [11, 22, 33, 44, 45]; //literal syntax
+
+const years = new Array(2020, 2021, 2022); // array function
+
+console.log(numbers.length);
+console.log(years.length);
+
+// mutate
+numbers[2] = 66;
+numbers[3] = 80;
+console.log(numbers);
+
+// array methods(push, pop,  shift, unshift, indexOf, includes)
+years.push(2023);
+years.push(2024);
+years.pop();
+years.pop();
+years.unshift(2019);
+years.unshift(2018);
+years.shift();
+years.shift();
+console.log(years);
+
+console.log(numbers.indexOf(80));
+console.log(numbers.indexOf(88));
+console.log(numbers.includes(88));
+console.log(numbers.includes(22));
+
+//objects
+const restuarant = {
+  restuarantName: "Spectra Burger Zone",
+  founding: 1998,
+  founder: "Mr. X",
+  setMenu: ["Burger", "Pasta", "Fajita", "Pizza", "Nachos"],
+
+  // foodCount: function (foods) {
+  //   return foods.length;
+  // },
+
+  foodCount: function () {
+    return this.setMenu.length;
+  },
+}; //object literal syntax
+
+console.log(restuarant.setMenu[3]);
+console.log(restuarant["restuarant" + "Name"]);
+
+// console.log(restuarant.foodCount(["Burger", "Pasta", "Fajita", "Nachos"]));
+
+console.log(restuarant.foodCount());
+
+const restuarant2 = restuarant;
+restuarant2.founding = 1996;
+restuarant.founder = "vv";
+console.log(restuarant);
+console.log(restuarant2);
+
+//for loop
+const arr = [1, 5, 3, 6, 9, 8];
+let sum = 0;
+
+for (let i = arr.length - 1; i >= 0; i--) {
+  sum = sum + arr[i];
+}
+
+console.log(sum);
+
+//////////////////////////////////////////////////////
+function testfunction(param) {
+  let sum = 0;
+  for (let i = 0; i < param.length; i++) {
+    sum += param[i];
+  }
+  return sum;
+}
+
+function diff(arr, sum) {
+  let newArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArray.push(sum - arr[i]);
+  }
+  return newArray;
+}
+
+const lambda = (a) => (b) => (c) => (d) => (e) => (f) => a + b + c + d + e + f;
+
+const testArray = [10, 20, 33, 54, 66, 78];
+const total = testfunction(testArray);
+const newArray = diff(testArray, total);
+console.log(total);
+console.log(newArray);
+const lambdaResult = lambda(newArray[0])(newArray[1])(newArray[2])(newArray[3])(
+  newArray[4]
+)(newArray[5]);
+console.log(lambdaResult);
